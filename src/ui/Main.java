@@ -6,6 +6,8 @@ import util.Calculate;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 
 public class Main extends JFrame {
@@ -13,20 +15,32 @@ public class Main extends JFrame {
         super("代码行统计");
         setLayout(null);
         setBounds(300, 100, 650, 550);
+        Toolkit took = Toolkit.getDefaultToolkit();
+        Image image = took.getImage("src/ui/code.png");
+        setIconImage(image);
+
+        Font font = new Font(Font.SERIF, Font.PLAIN, 14);
 
         JPanel panel = new JPanel(null);
         JLabel pathLabel = new JLabel("项目路径");
         JTextField path = new JTextField();
-        JButton submit = new JButton("统计");
-        JLabel totalLabel = new JLabel("总行数：0");
+        JLabel totalFiles = new JLabel("总文件数：0");
+        JLabel totalLines = new JLabel("总行数：0");
+
+        pathLabel.setFont(font);
+        path.setFont(font);
+        totalFiles.setFont(font);
+        totalLines.setFont(font);
+
         pathLabel.setBounds(0, 10, 60, 30);
         path.setBounds(70, 10, 260, 30);
-        submit.setBounds(350, 10, 80, 30);
-        totalLabel.setBounds(500,10,150,30);
+        totalFiles.setBounds(370, 10, 100, 30);
+        totalLines.setBounds(500,10,150,30);
+
         panel.add(pathLabel);
         panel.add(path);
-        panel.add(submit);
-        panel.add(totalLabel);
+        panel.add(totalFiles);
+        panel.add(totalLines);
         panel.setBounds(10, 0, 600, 50);
 
         JTable table = new JTable();
@@ -49,15 +63,31 @@ public class Main extends JFrame {
         add(scrollPane);
         add(panel);
         setVisible(true);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        submit.addActionListener((e -> {
-            TFile.getProperty().setFile(new File(path.getText()));
-            viewport.add(new Calculate().printf());
-            totalLabel.setText("总行数："+Calculate.totalLines);
-        }));
+        path.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
 
-        setResizable(false);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyChar() == KeyEvent.VK_ENTER){
+                    TFile.getProperty().setFile(new File(path.getText()));
+                    viewport.add(new Calculate().printf());
+                    totalFiles.setText("总文件数："+Calculate.totalFiles);
+                    totalLines.setText("总行数："+Calculate.totalLines);
+                }
+            }
+        });
+
     }
 
     public static void main(String[] args) {

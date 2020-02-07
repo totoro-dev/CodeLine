@@ -9,7 +9,9 @@ import java.io.File;
 
 public class Calculate {
 
+    public static long totalFiles = 0;
     public static long totalLines = 0;
+
     public int readFileLines(File file) {
         TFile.getProperty().setFile(file);
         TReader reader = new TReader(TFile.getProperty());
@@ -19,6 +21,7 @@ public class Calculate {
 
     public JTable printf() {
         totalLines = 0;
+        totalFiles = 0;
         JTable table = new JTable();
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -30,6 +33,7 @@ public class Calculate {
         table.getColumnModel().getColumn(1).setPreferredWidth(100);
 
         File[] list = new FileList().getFileList(TFile.getProperty().getFile());
+        totalFiles = list.length;
         String root = TFile.getProperty().getFile().getAbsolutePath();
         for (File file :
                 list) {
@@ -39,7 +43,6 @@ public class Calculate {
             path.replace("\\", "/");
             int lines = readFileLines(file);
             totalLines+=lines;
-
             String row[] = new String[2];
             row[0] = path;
             row[1] = lines + "";
