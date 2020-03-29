@@ -6,20 +6,49 @@ import top.totoro.file.core.io.TReader;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import static util.FileList.FILES;
+
 
 public class Calculate {
 
     public static long totalFiles = 0;
     public static long totalLines = 0;
+    private static String root = "";
+    private static final Map<File, Integer> LINES = new ConcurrentHashMap<>();
 
-    public int readFileLines(File file) {
-        TFile.getProperty().setFile(file);
-        TReader reader = new TReader(TFile.getProperty());
-        String codeLines[] = reader.getStringByFile().split("\n");
-        return codeLines.length;
+    public synchronized static String setProject(String path) {
+        if (!new File(path).exists()) {
+            return root;
+        }
+        root = path;
+        LINES.clear();
+        FILES.clear();
+        FileList.initFileList(new File(root));
+        return root;
     }
 
-    public JTable printf() {
+    private int readFileLines(File file) {
+        if (LINES.get(file) != null) return LINES.get(file);
+        TFile.getProperty().setFile(file);
+        TReader reader = new TReader(TFile.getProperty());
+        String[] codeLines = reader.getStringByFile().split("\n");
+        int lines = codeLines.length;
+        // 去除代码中的注释行数
+        for (String line : codeLines) {
+            String trim = line.trim();
+            if (trim.length() == 0 || trim.startsWith("//") || trim.startsWith("/*") || trim.startsWith("*") || (trim.startsWith("<!--") && trim.endsWith("-->"))) {
+                lines--;
+            }
+        }
+        LINES.put(file, lines);
+        return lines;
+    }
+
+    public JTable printf(List<String> types) {
         totalLines = 0;
         totalFiles = 0;
         JTable table = new JTable();
@@ -32,18 +61,18 @@ public class Calculate {
         table.getColumnModel().getColumn(0).setPreferredWidth(500);
         table.getColumnModel().getColumn(1).setPreferredWidth(100);
 
-        File[] list = new FileList().getFileList(TFile.getProperty().getFile());
+        File[] list = FileList.getFileList(types);
         totalFiles = list.length;
-        String root = TFile.getProperty().getFile().getAbsolutePath();
-        for (File file :
-                list) {
+        for (File file : list) {
             String path = file.getAbsolutePath();
-            if (path.contains("\\build\\")||path.contains("/build/"))continue;
+            // 排除项目中，ide自动生成的文件
+            if (path.contains("\\build\\") || path.contains("/build/") || path.contains("/.idea/") || path.contains("\\.idea\\"))
+                continue;
             path = ".." + path.substring(path.indexOf(root) + root.length());
-            path.replace("\\", "/");
+            path = path.replace("\\", "/");
             int lines = readFileLines(file);
-            totalLines+=lines;
-            String row[] = new String[2];
+            totalLines += lines;
+            String[] row = new String[2];
             row[0] = path;
             row[1] = lines + "";
             model.addRow(row);
