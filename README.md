@@ -5,7 +5,7 @@
 
 ## 基本使用
 
-![](..\CodeLine\img\show1.png)
+![](https://raw.githubusercontent.com/totoro-dev/CodeLine/master/img/show1.png)
 
 - 在输入框输入（粘贴）想要统计的项目的路径。
 - 使用路径自动补全，进入具体的文件夹进行统计。
