@@ -43,4 +43,14 @@ public class FileList {
         }
         return files.toArray(new File[0]);
     }
+
+    public static String getFileType(File file){
+        String suffix = file.getName().substring(file.getName().lastIndexOf("."));
+        for (String type : TYPES) {
+            if (suffix.equals(type)){
+                return type;
+            }
+        }
+        return null;
+    }
 }
