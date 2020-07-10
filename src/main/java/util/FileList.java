@@ -9,7 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class FileList {
 
     public static final Map<String, List<File>> FILES = new ConcurrentHashMap<>();
-    public static final String[] TYPES = new String[]{".java", ".c", ".cpp", ".cc", ".h", ".py", ".php", ".jsp", ".js", ".css", ".htm", ".html", ".xml"};
+    public static final String[] TYPES = new String[]{".java", ".c", ".cpp", ".cc", ".h", ".py", ".php", ".jsp", ".js", ".css", ".htm", ".html", ".xml"
+            ,".cs"/*since v1.0.2 对C#语言的支持*/,".dart"/*since v1.0.2 对Dart语言的支持*/};
 
     public synchronized static void initFileList(File dir) {
         if (dir.isDirectory()) {
