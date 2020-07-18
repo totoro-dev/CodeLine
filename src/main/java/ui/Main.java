@@ -34,13 +34,17 @@ public class Main extends JFrame implements ItemListener {
     private JViewport viewport = new JViewport();
     private TypeItem java = new TypeItem(new JCheckBox("Java", true), true, ".java");
     private TypeItem c = new TypeItem(new JCheckBox("C/C++"), false, ".c", ".cpp", ".cc", ".h");
+    // since v1.0.2 增加C#的支持
+    private TypeItem cccc = new TypeItem(new JCheckBox("C#"), false, ".cs");
+    // since v1.0.2 增加Dart的支持
+    private TypeItem dart = new TypeItem(new JCheckBox("Dart"), false, ".dart");
     private TypeItem py = new TypeItem(new JCheckBox("Python"), false, ".py");
     private TypeItem php = new TypeItem(new JCheckBox("PHP"), false, ".php");
+    private TypeItem jsp = new TypeItem(new JCheckBox("JSP"), false, ".jsp");
     private TypeItem js = new TypeItem(new JCheckBox("JS"), false, ".js");
     private TypeItem css = new TypeItem(new JCheckBox("CSS"), false, ".css");
     private TypeItem html = new TypeItem(new JCheckBox("HTML"), false, ".htm", ".html");
     private TypeItem xml = new TypeItem(new JCheckBox("XML"), false, ".xml");
-    private TypeItem jsp = new TypeItem(new JCheckBox("JSP"), false, ".jsp");
     private JCheckBox all = new JCheckBox("全选");
 
     private boolean selectedAll = false; // 是否已经全选
@@ -83,7 +87,9 @@ public class Main extends JFrame implements ItemListener {
             types.setBorder(BorderFactory.createTitledBorder("请选择文件类型"));
             types.setBounds(10, 50, 615, 80);
             types.add(java.box);
+            types.add(dart.box);
             types.add(c.box);
+            types.add(cccc.box);
             types.add(py.box);
             types.add(php.box);
             types.add(jsp.box);
@@ -215,7 +221,9 @@ public class Main extends JFrame implements ItemListener {
                 if (!autoSelect) {
                     autoSelect = true;
                     java.resetStatus();
+                    dart.resetStatus();
                     c.resetStatus();
+                    cccc.resetStatus();
                     py.resetStatus();
                     php.resetStatus();
                     js.resetStatus();
@@ -230,7 +238,9 @@ public class Main extends JFrame implements ItemListener {
             }
             autoSelect = true; // 说明接下来的操作是自动完成，所以不需要记录手动选择的状态
             java.setSelected(true);
+            dart.setSelected(true);
             c.setSelected(true);
+            cccc.setSelected(true);
             py.setSelected(true);
             php.setSelected(true);
             js.setSelected(true);
@@ -252,8 +262,14 @@ public class Main extends JFrame implements ItemListener {
             case "Java":
                 java.resoleType();
                 break;
+            case "Dart":
+                dart.resoleType();
+                break;
             case "C/C++":
                 c.resoleType();
+                break;
+            case "C#":
+                cccc.resoleType();
                 break;
             case "Python":
                 py.resoleType();
