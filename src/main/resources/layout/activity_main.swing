@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout
+	width="match_parent"
+	height="match_parent"
+	orientation="vertical">
+	<TextView
+		width="match_parent"
+		height="match_parent"
+		textColor="#515151"
+		text="Hello World"/>
+</LinearLayout>
