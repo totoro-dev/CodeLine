@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout
+	width="match_parent"
+	height="30"
+	orientation="horizontal">
+	<CheckBox
+	    id="type1"
+        width="match_parent"
+        height="30"/>
+    <CheckBox
+        id="type2"
+        width="match_parent"
+        height="30"/>
+    <CheckBox
+        id="type3"
+        width="match_parent"
+        height="30"/>
+    <CheckBox
+        id="type4"
+        width="match_parent"
+        height="30"/>
+    <CheckBox
+        id="type5"
+        width="match_parent"
+        height="30"/>
+    <CheckBox
+        id="type6"
+        width="match_parent"
+        height="30"/>
+</LinearLayout>

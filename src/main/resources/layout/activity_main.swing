@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout
+	width="match_parent"
+	height="match_parent"
+	orientation="vertical">
+	<LinearLayout
+		width="match_parent"
+		height="30"
+		orientation="horizontal"
+		marginTop="10"
+		marginLeft="20">
+		<TextView
+			width="wrap_content"
+			height="match_parent"
+			text="项目路径"
+			alignment="left"/>
+		<EditText
+		    id="etPath"
+			width="250"
+			height="match_parent"
+			marginLeft="10"
+			hintText="请输入路径"/>
+		<LinearLayout
+			width="match_parent"
+			height="match_parent"
+			orientation="horizontal">
+			<TextView
+			    id="tvFileCount"
+				width="match_parent"
+				height="match_parent"
+				text="总文件数：0"
+				alignment="left"
+			    marginLeft="20"/>
+			<TextView
+			    id="tvLineCount"
+				width="match_parent"
+				height="match_parent"
+				text="总行数：0"
+				alignment="left"/>
+		</LinearLayout>
+	</LinearLayout>
+
+    <RecyclerView
+        id="rvFileTypes"
+    	width="match_parent"
+    	height="60"
+    	marginTop="10"
+    	marginLeft="20"
+    	marginRight="20"/>
+
+    <Span
+    	width="match_parent"
+    	height="1"
+    	marginTop="10"
+    	marginLeft="20"
+    	marginRight="20"
+    	background="#dbdbdb"/>
+
+    <RecyclerView
+        id="rvFileList"
+        width="match_parent"
+        height="match_parent"
+    	marginLeft="20"
+    	marginRight="20"
+        leftBorder="1"
+        rightBorder="1"/>
+
+    <Span
+    	width="match_parent"
+    	height="1"
+    	marginBottom="20"
+    	marginLeft="20"
+    	marginRight="20"
+    	background="#dbdbdb"/>
+</LinearLayout>
