@@ -19,6 +19,14 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/TFile.jar</systemPath>
         </dependency>
+
+        <dependency>
+            <groupId>io.github.totoro-dev</groupId>
+            <artifactId>SwingPro</artifactId>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/SwingPro.jar</systemPath>
+            <version>1.0.7</version>
+        </dependency>
     </dependencies>
 
     <!-- 指定编译器版本为1.8，不随IDEA的update而重置 -->

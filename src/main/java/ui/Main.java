@@ -55,7 +55,7 @@ public class Main extends JFrame implements ItemListener {
         setLayout(null);
         setSize(650, 550);
         setLocationRelativeTo(null);
-        setIconImage(new ImageIcon(getClass().getClassLoader().getResource("img/code.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getClassLoader().getResource("mipmap/code.png")).getImage());
         setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, Collections.EMPTY_SET);
         setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, Collections.EMPTY_SET);
 
