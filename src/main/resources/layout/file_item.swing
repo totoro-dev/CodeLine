@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout
+	width="match_parent"
+	height="30"
+	orientation="horizontal">
+	<TextView
+	    id="tvPath"
+		width="match_parent"
+		height="match_parent"
+		textColor="#515151"
+		bottomBorder="1"
+		leftBorder="1"
+		rightBorder="1"
+		alignment="left"
+		text="文件路径"/>
+	<TextView
+	    id="tvLines"
+		width="80"
+		height="match_parent"
+		textColor="#515151"
+		bottomBorder="1"
+		rightBorder="1"
+		text="代码行数"/>
+</LinearLayout>

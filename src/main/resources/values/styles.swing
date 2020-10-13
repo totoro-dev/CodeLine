@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<default>
+		<item name="backgroundColor">#ffffff</item>
+		<item name="borderColor">#dbdbdb</item>
+		<item name="themeColor">#15a5e5</item>
+		<item name="appIcon">img/swing_logo.png</item>
+	</default>
+</resource>

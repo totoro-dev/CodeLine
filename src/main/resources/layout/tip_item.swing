@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout
+	width="match_parent"
+	height="29"
+	orientation="vertical">
+	<TextView
+	    id="tvTip"
+		width="match_parent"
+		height="29"
+		textColor="#515151"
+		alignment="right"
+		leftBorder="1"
+		rightBorder="1"
+		bottomBorder="1"/>
+</LinearLayout>

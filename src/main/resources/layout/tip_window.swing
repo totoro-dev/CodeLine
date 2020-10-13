@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout
+	width="match_parent"
+	height="match_parent"
+	orientation="vertical"
+	topBorder="1"
+	bottomBorder="1"
+	leftBorder="1"
+	rightBorder="1">
+
+    <Span
+    	width="match_parent"
+    	height="1"
+    	background="#dbdbdb"/>
+
+    <RecyclerView
+        id="rvTipList"
+        width="match_parent"
+        height="match_parent"
+        leftBorder="1"
+        rightBorder="1"/>
+
+    <Span
+    	width="match_parent"
+    	height="1"
+    	background="#dbdbdb"/>
+</LinearLayout>
