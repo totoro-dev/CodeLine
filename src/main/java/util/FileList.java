@@ -10,12 +10,17 @@ public class FileList {
 
     public static final Map<String, List<File>> FILES = new ConcurrentHashMap<>();
     public static final String[] TYPES = new String[]{".java", ".c", ".cpp", ".cc", ".h", ".py", ".php", ".jsp", ".js", ".css", ".htm", ".html", ".xml"
-            ,".cs"/*since v1.0.2 对C#语言的支持*/,".dart"/*since v1.0.2 对Dart语言的支持*/};
+            ,".cs"/*since v1.0.2 对C#语言的支持*/,".dart"/*since v1.0.2 对Dart语言的支持*/,".vue"/*since v1.0.3 对Vue的支持*/};
 
     public synchronized static void initFileList(File dir) {
         if (dir.isDirectory()) {
             File[] files = dir.listFiles();
             if (files == null) return;
+            String dirPath = dir.getAbsolutePath().replace("\\", "/");
+            // 排除项目中，编译自动生成的文件
+            if (dirPath.endsWith("/build") || dirPath.endsWith("/target") || dirPath.endsWith("/.idea") || dirPath.endsWith("/node_modules")) {
+                return;
+            }
             for (File subFile : files) {
                 if (subFile.isDirectory()) {
                     initFileList(subFile);

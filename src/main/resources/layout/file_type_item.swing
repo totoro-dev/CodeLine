@@ -6,25 +6,31 @@
 	<CheckBox
 	    id="type1"
         width="match_parent"
-        height="30"/>
+        height="30"
+        visible="gone"/>
     <CheckBox
         id="type2"
         width="match_parent"
-        height="30"/>
+        height="30"
+        visible="gone"/>
     <CheckBox
         id="type3"
         width="match_parent"
-        height="30"/>
+        height="30"
+        visible="gone"/>
     <CheckBox
         id="type4"
         width="match_parent"
-        height="30"/>
+        height="30"
+        visible="gone"/>
     <CheckBox
         id="type5"
         width="match_parent"
-        height="30"/>
+        height="30"
+        visible="gone"/>
     <CheckBox
         id="type6"
         width="match_parent"
-        height="30"/>
+        height="30"
+        visible="gone"/>
 </LinearLayout>

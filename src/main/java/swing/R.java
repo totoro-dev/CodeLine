@@ -15,16 +15,16 @@ public final class R{
 		public static final String tip_window="tip_window.swing";
 	}
 	public static class id {
-		public static final String tvTip="tvTip";
+		public static final String rvTipList="rvTipList";
+		public static final String tvPath="tvPath";
+		public static final String tvLines="tvLines";
 		public static final String type1="type1";
 		public static final String type2="type2";
 		public static final String type3="type3";
 		public static final String type4="type4";
 		public static final String type5="type5";
 		public static final String type6="type6";
-		public static final String rvTipList="rvTipList";
-		public static final String tvPath="tvPath";
-		public static final String tvLines="tvLines";
+		public static final String tvTip="tvTip";
 		public static final String etPath="etPath";
 		public static final String tvFileCount="tvFileCount";
 		public static final String tvLineCount="tvLineCount";

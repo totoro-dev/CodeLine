@@ -2,6 +2,7 @@ package ui;
 
 import swing.R;
 import top.totoro.swing.widget.base.BaseLayout;
+import top.totoro.swing.widget.bean.ViewAttribute;
 import top.totoro.swing.widget.layout.LayoutInflater;
 import top.totoro.swing.widget.util.Log;
 import top.totoro.swing.widget.view.CheckBox;
@@ -31,7 +32,8 @@ public class FileTypeAdapter extends RecyclerView.Adapter<FileTypeAdapter.ViewHo
                     new Type("CSS", ".css"),
                     new Type("HTML", ".htm", ".html"),
                     new Type("XML", ".xml"),
-                    new Type("全选", FileList.TYPES)}};
+                    new Type("VUE", ".vue")},
+            {new Type("全选", FileList.TYPES)}};
 
     private final Set<Type> lastSelectTypes = new HashSet<>();
 
@@ -54,6 +56,9 @@ public class FileTypeAdapter extends RecyclerView.Adapter<FileTypeAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position, int viewType) {
         Type[] types = TYPES[position];
         for (int i = 0; i < types.length; i++) {
+            if (types[i] != null) {
+                holder.types[i].setVisible(ViewAttribute.VISIBLE);
+            }
             if (lastSelectTypes.contains(types[i]) || autoSelectAll) {
                 holder.types[i].setIsSelected(true);
             } else if (cancelSelectAll) {

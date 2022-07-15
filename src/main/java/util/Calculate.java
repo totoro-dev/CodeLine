@@ -99,15 +99,6 @@ public class Calculate {
         File[] list = FileList.getFileList(types);
         for (File file : list) {
             String path = file.getAbsolutePath();
-            // 排除项目中，ide自动生成的文件
-            if (path.contains("\\build\\") || path.contains("\\.idea\\") || path.contains("/build/") || path.contains("/.idea/")) {
-                String fileType = getFileType(file);
-                if (fileType != null) {
-                    List<File> files = FILES.computeIfAbsent(fileType, key -> new ArrayList<>());
-                    files.remove(file);
-                }
-                continue;
-            }
             // since v1.0.2 解决有效统计的源文件数量包含了IDE自动生成的文件的问题
             totalFiles = FileList.getFileList(types).length;
             path = ".." + path.substring(path.indexOf(root) + root.length());
