@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
 Main-Class: ui.MainActivity
-Class-Path: dom4j-1.6.1.jar xml-apis-1.0.b2.jar TFile.jar
+Class-Path: SwingPro.jar TFile.jar
 
